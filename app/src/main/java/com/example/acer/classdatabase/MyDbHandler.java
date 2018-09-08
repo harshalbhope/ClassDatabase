@@ -43,7 +43,7 @@ public class MyDbHandler extends SQLiteOpenHelper{
             do {
                 String rno = c.getString(c.getColumnIndex("rno"));
                 String name = c.getString(c.getColumnIndex("name"));
-                sb.append("Rno "+rno+"name "+name+"/n");
+                sb.append("Rno: "+rno+" Name: "+name+"\n");
 
             }while (c.moveToNext());
         }
@@ -71,7 +71,7 @@ public class MyDbHandler extends SQLiteOpenHelper{
         cv.put("rno", rno);
         cv.put("name", name);
 
-        long rid = db.update("student", cv, "rno+"+rno, null);
+        long rid = db.update("student", cv, "rno="+rno, null);
         if (rid < 0){
             Toast.makeText(context, "Update issue", Toast.LENGTH_SHORT).show();
         }else {
@@ -82,7 +82,7 @@ public class MyDbHandler extends SQLiteOpenHelper{
 
     public void deleteRecord(int rno){
 
-        long rid = db.delete("student","rno"+rno, null);
+        long rid = db.delete("student","rno="+rno, null);
         if (rid < 0){
             Toast.makeText(context, "Delete issue", Toast.LENGTH_SHORT).show();
         }else {
