@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAdd, btnView;
+    Button btnAdd, btnView, btnUpdate, btnDelete;
     static MyDbHandler db;
 
     @Override
@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnAdd = (Button)findViewById(R.id.btnAdd);
         btnView = (Button)findViewById(R.id.btnView);
+        btnUpdate = (Button)findViewById(R.id.btnUpdate);
+        btnDelete = (Button)findViewById(R.id.btnDelete);
         db = new MyDbHandler(this);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -31,6 +33,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, ViewActivity.class));
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, UpdateActivity.class));
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, DeleteActivity.class));
             }
         });
     }

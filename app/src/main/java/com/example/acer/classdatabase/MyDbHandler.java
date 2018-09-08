@@ -14,6 +14,7 @@ import android.widget.Toast;
  */
 
 public class MyDbHandler extends SQLiteOpenHelper{
+
     Context context;
     SQLiteDatabase db;
 
@@ -42,7 +43,7 @@ public class MyDbHandler extends SQLiteOpenHelper{
             do {
                 String rno = c.getString(c.getColumnIndex("rno"));
                 String name = c.getString(c.getColumnIndex("name"));
-                sb.append("Rno"+rno+"name"+name);
+                sb.append("Rno "+rno+"name "+name+"/n");
 
             }while (c.moveToNext());
         }
@@ -50,17 +51,43 @@ public class MyDbHandler extends SQLiteOpenHelper{
     }
 
     public void addRecord(int rno, String name){
+
         ContentValues cv = new ContentValues();
         cv.put("rno", rno);
-
         cv.put("name", name);
 
         long rid = db.insert("student", null, cv);
         if (rid < 0){
-            Toast.makeText(context, "issue", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "This Rno already exists", Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context, "record added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Record has been Added", Toast.LENGTH_SHORT).show();
 
         }
     }
+
+    public void updateRecord(int rno, String name){
+
+        ContentValues cv = new ContentValues();
+        cv.put("rno", rno);
+        cv.put("name", name);
+
+        long rid = db.update("student", cv, "rno+"+rno, null);
+        if (rid < 0){
+            Toast.makeText(context, "Update issue", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Record has been Updated", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    public void deleteRecord(int rno){
+
+        long rid = db.delete("student","rno"+rno, null);
+        if (rid < 0){
+            Toast.makeText(context, "Delete issue", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Record has been Deleted", Toast.LENGTH_SHORT).show();
+
+        }
+}
 }

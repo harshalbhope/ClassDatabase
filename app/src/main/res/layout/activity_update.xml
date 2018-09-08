@@ -16,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:hint="Enter Rno"/>
 
     <EditText
         android:id="@+id/etUpdateName"
@@ -24,11 +25,11 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Enter the name to be updated" />
 
     <Button
-        android:id="@+id/btnUpdaeSave"
+        android:id="@+id/btnUpdateSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Update" />
 </LinearLayout>

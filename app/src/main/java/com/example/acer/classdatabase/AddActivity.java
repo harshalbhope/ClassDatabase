@@ -25,7 +25,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String rno = etAddRno.getText().toString();
                 if (rno.length() == 0){
-                    etAddRno.setError("rno is empty");
+                    etAddRno.setError("Rno is empty");
                     etAddRno.requestFocus();
                     return;
                 }

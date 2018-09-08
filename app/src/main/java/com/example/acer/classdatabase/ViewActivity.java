@@ -17,7 +17,7 @@ public class ViewActivity extends AppCompatActivity {
 
         String data = MainActivity.db.viewRecord();
         if (data.length() == 0){
-            tvViewData.setText("No records");
+            tvViewData.setText("No Records Found");
         }
         else tvViewData.setText(data);
     }
